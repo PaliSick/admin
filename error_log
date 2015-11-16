@@ -1,0 +1,26 @@
+[19-Sep-2015 16:34:39 America/New_York] PHP Fatal error:  Cannot override final method BaseController::__construct() in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 2
+[19-Sep-2015 20:57:05 America/New_York] PHP Fatal error:  Cannot redeclare indexController::quiero() in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 39
+[19-Sep-2015 21:10:40 America/New_York] PHP Fatal error:  Call to a member function getParam() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 130
+[19-Sep-2015 21:10:46 America/New_York] PHP Fatal error:  Call to a member function getParam() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 130
+[19-Sep-2015 21:11:34 America/New_York] PHP Fatal error:  Call to a member function getParam() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 130
+[19-Sep-2015 21:13:12 America/New_York] PHP Fatal error:  Call to a member function getParam() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 130
+[19-Sep-2015 21:14:27 America/New_York] PHP Fatal error:  Call to a member function getParam() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 130
+[19-Sep-2015 21:15:23 America/New_York] PHP Fatal error:  Call to a member function getParam() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 130
+[19-Sep-2015 21:16:23 America/New_York] PHP Fatal error:  Call to a member function getParam() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 130
+[19-Sep-2015 21:16:36 America/New_York] PHP Fatal error:  Call to a member function getParam() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 130
+[19-Sep-2015 21:17:49 America/New_York] PHP Fatal error:  Call to a member function setEstado() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 142
+[19-Sep-2015 21:19:59 America/New_York] PHP Fatal error:  Call to a member function setEstado() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 143
+[19-Sep-2015 21:20:29 America/New_York] PHP Fatal error:  Call to a member function setEstado() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 143
+[19-Sep-2015 21:22:31 America/New_York] PHP Fatal error:  Call to a member function setEstado() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 144
+[19-Sep-2015 21:23:57 America/New_York] PHP Fatal error:  Call to a member function setEstado() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 145
+[20-Sep-2015 10:41:59 America/New_York] PHP Fatal error:  Cannot use object of type Peliculas as array in /home/wwweefol/public_html/seedbox/app/tmp/index.e4c29fb0af33d1b6792ff407dce6533e.rtpl.php on line 36
+[20-Sep-2015 10:42:00 America/New_York] PHP Fatal error:  Cannot use object of type Peliculas as array in /home/wwweefol/public_html/seedbox/app/tmp/index.e4c29fb0af33d1b6792ff407dce6533e.rtpl.php on line 36
+[20-Sep-2015 10:43:41 America/New_York] PHP Fatal error:  Cannot use object of type Peliculas as array in /home/wwweefol/public_html/seedbox/app/tmp/index.e4c29fb0af33d1b6792ff407dce6533e.rtpl.php on line 36
+[20-Sep-2015 10:43:42 America/New_York] PHP Fatal error:  Cannot use object of type Peliculas as array in /home/wwweefol/public_html/seedbox/app/tmp/index.e4c29fb0af33d1b6792ff407dce6533e.rtpl.php on line 36
+[20-Sep-2015 10:44:10 America/New_York] PHP Fatal error:  Cannot use object of type Peliculas as array in /home/wwweefol/public_html/seedbox/app/tmp/index.e4c29fb0af33d1b6792ff407dce6533e.rtpl.php on line 36
+[20-Sep-2015 10:44:11 America/New_York] PHP Fatal error:  Cannot use object of type Peliculas as array in /home/wwweefol/public_html/seedbox/app/tmp/index.e4c29fb0af33d1b6792ff407dce6533e.rtpl.php on line 36
+[27-Sep-2015 15:30:20 America/New_York] PHP Fatal error:  Cannot use object of type Comentarios as array in /home/wwweefol/public_html/seedbox/app/tmp/ver.e4c29fb0af33d1b6792ff407dce6533e.rtpl.php on line 44
+[27-Sep-2015 23:34:22 America/New_York] PHP Fatal error:  Call to a member function setEstado() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 172
+[27-Sep-2015 23:37:26 America/New_York] PHP Fatal error:  Call to a member function setEstado() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 173
+[28-Sep-2015 09:08:04 America/New_York] PHP Fatal error:  Call to a member function setTipo() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 169
+[28-Sep-2015 16:30:25 America/New_York] PHP Fatal error:  Call to a member function getAction() on a non-object in /home/wwweefol/public_html/seedbox/app/controllers/index_controller.php on line 32
