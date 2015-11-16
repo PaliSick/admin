@@ -493,6 +493,39 @@ class indexController extends BaseController {
 		}
 	}
 
+	public function varios()
+	{
+		if ((int)$_SESSION['s_user']['Id']>0 ) {
+			DBManager::beginTransaction();
+			if($_POST['tipo']==1)
+				 $estado=1;
+			else
+				 $estado=0;
+			foreach ($_POST['Pelicula'] as $key => $value) {
+				
+				$Relacion = new Rel_pelicula_usuario();
+				$Relacion->setId_usuario($_SESSION['s_user']['Id']);
+				$Relacion->setId_pelicula($value);
+				$Relacion->setEstado( $estado);
+				$Relacion->setTipo(0);
+				try{
+					DBManager::Insert($Relacion);	
+				} catch (Exception $e) {
+					DBManager::rollback();
+					$r = array('status' => 'error','info'=> 'Error, al eliminar las relaciones'.$e->getMessage());
+					echo json_encode($r);
+					return false;
+				}					
+			}
+			
+			DBManager::commit();
+			$r = array('status' => 'ok');
+			echo json_encode($r);
+			return false;
+
+		}
+	}
+
 	public function perfil()
 	{
 		if ((int)$_SESSION['s_user']['Id']==0 && $this->checkCookie()==false  ) {

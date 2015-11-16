@@ -1,4 +1,13 @@
 {include="templates/head"}
+<style type="text/css">
+    #selectores{
+    z-index: 1000;
+    background-color: lightgrey;
+    opacity: 0.6;
+    pointer-events: none;
+    width: 137px;
+    }
+</style>
 </head>
 
 <body>
@@ -37,9 +46,12 @@
                                 {/if}   
                              
                                 <div class="dataTable_wrapper">
+                                    <form action="" method="post" name="form_selector" id="form_selector">
+                                    <div id="selectores"  ng-class="{disabled: !status}" ><a href="#" id="quieros" class="btn btn-success " >Quiero</a>  &nbsp;<a href="#" class="btn btn-danger " id="pasos">Paso</a></div>
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-categoria">
                                         <thead>
                                             <tr>
+                                                <th></th>
                                                 <th>Pelicula</th>
                                                 <th>Ver</th>
                                                 <th>Quiero</th>
@@ -49,6 +61,7 @@
                                         <tbody>
                                             {loop="peliculas"}
                                             <tr class="{$value.info}{$mostrar}">
+                                                <td><input type="checkbox" name="Pelicula[]" id="Id-{$key}" class="seleccion" value="{$value.Id}"  ></td>
                                                 <td>{$value.Pelicula}</td>
                                                 <td class="col-lg-1"><a href="index/ver/{$value.Id}" class="btn btn-primary">Detalles</a></td>
                                                 <td class="col-lg-1"><a href="index/setEstado/{$value.Id}/1" class="btn btn-success setEstado">Quiero</a></td>
@@ -66,6 +79,8 @@
                                             </tr>
                                         </tfoot>
                                     </table>
+                                    <input type="hidden" id="tipo" name="tipo" value="0">
+                                    </form>
                                 </div>
                             </div>
                             
@@ -85,7 +100,7 @@
     {include="templates/js"}
 
     <script type="text/javascript">
-
+        var total=0;
         $(document).ready(function() {
 
             $('.setEstado').click(function(e) {
@@ -128,6 +143,53 @@
 
             });
 
+            $('.seleccion').click(function(){
+
+                total=0;
+
+                 $('.seleccion').each(function(i, e){
+                    
+                    if( $(e).prop('checked')){                       
+                        total=1;
+                    }
+
+                 });
+                
+                 if(total==1){
+                    
+                    $('#selectores').css({"background-color":"#fff", "opacity":"1","pointer-events":"auto"});
+                 }else{
+                     $('#selectores').css({"background-color":"lightgrey", "opacity":"0.6","pointer-events":"none"});
+                 }
+            
+            });
+            $('#form_selector').submit(function(e) {
+                e.preventDefault();
+                var form = $(this), to = 0;
+                var data = form.serialize();
+                
+
+                $.post('{$base_path}/index/varios', data, function(data) {
+                    
+                    if(data.status=='ok'){
+                         window.location = '{$base_path}/index/nuevas';
+                    }else{
+                        alert('Se produjo un error, intente luego');
+                       
+                    }
+                }, 'json');
+            });
+
+             $('#quieros').click(function(e) {
+                $('#tipo').val(1);
+                $('#form_selector').submit();
+            }); 
+             $('#pasos').click(function(e) {
+                $('#tipo').val(2);
+                $('#form_selector').submit();
+            });           
+
+ 
         });
 
     </script>
