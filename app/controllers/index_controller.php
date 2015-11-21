@@ -308,23 +308,26 @@ class indexController extends BaseController {
 		//Si es la primera vez lo inserto en la tabla
 
 		$Relacion=DBManager::selectClassByParam('Rel_pelicula_usuario',  array('id_pelicula' =>$id, 'Id_usuario'=>$_SESSION['s_user']['Id']), false);
+		if($_SESSION['s_user']['Id']>0){
+			if(!count($Relacion)>0){
+			
+				$Relacion = new Rel_pelicula_usuario();
+				$Relacion->setId_usuario((int)$_SESSION['s_user']['Id']);
+				$Relacion->setId_pelicula($id);
+				$Relacion->setEstado(0);
+				$Relacion->setTipo(0);
+				DBManager::Insert($Relacion);
+			}else{
 
-		if(!count($Relacion)>0){
-		
-			$Relacion = new Rel_pelicula_usuario();
-			$Relacion->setId_usuario((int)$_SESSION['s_user']['Id']);
-			$Relacion->setId_pelicula($id);
-			$Relacion->setEstado(0);
-			$Relacion->setTipo(0);
-			DBManager::Insert($Relacion);
-		}else{
-
-			$Relacion=array_pop($Relacion);	
-			if($Relacion['Tipo']==1){
-				$RelUpdate= DBManager::selectClassById('Rel_pelicula_usuario', $Relacion['Id'], true);
-				$RelUpdate->setTipo(0);
-				DBManager::Update($RelUpdate);
+				$Relacion=array_pop($Relacion);	
+				if($Relacion['Tipo']==1){
+					$RelUpdate= DBManager::selectClassById('Rel_pelicula_usuario', $Relacion['Id'], true);
+					$RelUpdate->setTipo(0);
+					DBManager::Update($RelUpdate);
+				}
 			}
+		}else{
+			header("Location: /seedbox/index/login");
 		}
 
 		return $this->renderAction("ver");
@@ -338,21 +341,25 @@ class indexController extends BaseController {
 
 		$Relacion=DBManager::selectClassByParam('Rel_pelicula_usuario',  array('id_pelicula' =>$id_pelicula, 'Id_usuario'=>$_SESSION['s_user']['Id']), false);
 		$Relacion=array_pop($Relacion);	
-		if(!count($Relacion)>0){	
-				
-			$Relacion = new Rel_pelicula_usuario();
-			$Relacion->setId_usuario($_SESSION['s_user']['Id']);
-			$Relacion->setId_pelicula($id_pelicula);
-			$Relacion->setEstado($estado);
-			$Relacion->setTipo(0);
-			DBManager::Insert($Relacion);
+		if($_SESSION['s_user']['Id']>0){
+			if(!count($Relacion)>0){	
+					
+				$Relacion = new Rel_pelicula_usuario();
+				$Relacion->setId_usuario($_SESSION['s_user']['Id']);
+				$Relacion->setId_pelicula($id_pelicula);
+				$Relacion->setEstado($estado);
+				$Relacion->setTipo(0);
+				DBManager::Insert($Relacion);
+			}else{
+				$RelUpdate= DBManager::selectClassById('Rel_pelicula_usuario', $Relacion['Id'], true);
+				$RelUpdate->setEstado($estado);
+				$RelUpdate->setTipo(0);
+				DBManager::Update($RelUpdate);
+			}
+			$r = array('status' => 'ok');
 		}else{
-			$RelUpdate= DBManager::selectClassById('Rel_pelicula_usuario', $Relacion['Id'], true);
-			$RelUpdate->setEstado($estado);
-			$RelUpdate->setTipo(0);
-			DBManager::Update($RelUpdate);
+			$r = array('status' => 'error', 'info'=>'No se pudo identificar el usuario.');
 		}
-		$r = array('status' => 'ok');
 		echo json_encode($r);
 		return false;		
 	}
