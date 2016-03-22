@@ -34,9 +34,9 @@
  // ********** ADJUST THESE VALUES HERE **********
  
   $this->host = "localhost";                  //          <<---------
-  $this->password = "K2__t5swWWsfvbl";           //          <<---------
-  $this->user = "wwweefol_movie";                   //          <<---------
-  $this->database = "wwweefol_movie";           //          <<---------
+  $this->password = "j_lo5y13eqzPh_";           //          <<---------
+  $this->user = "seedbox_user";                   //          <<---------
+  $this->database = "seedbox";           //          <<---------
   $this->rows = 0;
  
  // **********************************************

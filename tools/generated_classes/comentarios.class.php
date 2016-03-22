@@ -3,10 +3,10 @@
 *
 * -------------------------------------------------------
 * CLASSNAME:        Comentarios
-* GENERATION DATE:  27.09.2015
-* CLASS FILE:       /home/wwweefol/public_html/seedbox/tools/generated_classes/Comentarios.class.php
+* GENERATION DATE:  20.03.2016
+* CLASS FILE:       /var/www/html/seedbox/tools/generated_classes/Comentarios.class.php
 * FOR MYSQL TABLE:  Comentarios
-* FOR MYSQL DB:     wwweefol_movie
+* FOR MYSQL DB:     seedbox
 * -------------------------------------------------------
 */
 

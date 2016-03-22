@@ -35,6 +35,37 @@
 				}, 3000);
 				return this;
 			}
+
+
 		})(jQuery);
+
+
+			  var registrarMensajes=function(){
+
+			    $('#send').on("click", function(e){
+			     	var data = $('#Mensaje').val();
+			    	 $('#Mensaje').val('');
+			        e.preventDefault();
+			        $.ajax({
+			            type: "POST",
+			            url : "{$base_path}/index/guardaChat",
+			            data: 'Mensaje='+data
+			        });
+			        cargaMensajes();
+
+			    });
+			};
+
+        var cargaMensajes=function(){              
+           
+            $.ajax({
+                type: "POST",
+                url : "{$base_path}/index/cargaChat"
+            }).done(function(info){
+                $("#conversation").html(info);
+
+            });
+                          
+        }
 
     </script>

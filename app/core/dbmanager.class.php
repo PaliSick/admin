@@ -6,7 +6,7 @@ class DBManager {
 		
 
 	private static function construct(){
-		if ($db == null) {
+		if (!isset($db)) {
 			self::$db = MysqlPDO::get();
 		}
 	}

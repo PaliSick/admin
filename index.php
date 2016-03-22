@@ -4,9 +4,11 @@
 
 
 	require 'app/core/general_propouse.php';
-
+	
 	#Change Include path
 	//ini_set('include_path', ini_get('include_path').':../../lib:');
+	$base=str_replace($_SERVER['DOCUMENT_ROOT'], '', pathinfo($_SERVER['SCRIPT_FILENAME']));
+	DEFINE('BASE_DIR',  rtrim(array_shift($base), '/'));
 
 	// Estos archivos se cargan estáticamente porque se 
 	// encuentran en la carpeta lib/
@@ -16,11 +18,11 @@
 
 	//Determina el directorio base
 	//$baseDir = rtrim(array_shift(str_replace($_SERVER['DOCUMENT_ROOT'], '', pathinfo($_SERVER['SCRIPT_FILENAME']))), '/');
-	DEFINE('BASE_DIR',  rtrim(array_shift(str_replace($_SERVER['DOCUMENT_ROOT'], '', pathinfo($_SERVER['SCRIPT_FILENAME']))), '/'));
+	$base=str_replace($_SERVER['DOCUMENT_ROOT'], '', pathinfo($_SERVER['SCRIPT_FILENAME']));
+	//DEFINE('BASE_DIR',  rtrim(array_shift($base), '/'));
 	$a = pathinfo($_SERVER['SCRIPT_FILENAME']);
 	$b = rtrim($_SERVER['DOCUMENT_ROOT'], '/');
 	$c = str_replace($b, '', $a['dirname']);
-
 
 
 
@@ -38,6 +40,7 @@
 	
 	$controllerFile = './app/controllers/'. $controller . '_controller.php';
 
+
 	DEFINE('CURRENT_CONTROLLER', $controller);
 
 	if (CURRENT_CONTROLLER != 'index' && $_SESSION['autorized'] != 1 ) {
@@ -45,10 +48,11 @@
 		header("Location: /seedbox/login");
 	}	
 
+
 	//Verifica que el archivo del controller exista
 	$error=0;
 	if (!is_file($controllerFile)) {
-		
+	
 		require_once 'app/controllers/error_controller.php';
 		//$router->addRule('/error', array('controller' => 'error', 'action' => 'index'));
 		$controllerClass = 'errorController';
@@ -67,6 +71,7 @@
 	
 	//Verifica si se definió la clase del controller luego de la inclusión
 	if (!class_exists($controllerClass)) {
+
 		require_once 'app/controllers/error_controller.php';
 		//$router->addRule('/error', array('controller' => 'error', 'action' => 'index'));
 		$controllerClass = 'errorController';
@@ -115,9 +120,11 @@
 	}
 	
 	//Ejecuta la accion
+	
 	try {
 		$actionHtml = $controllerInstance->$action();
 	} catch (Exception $e) {
+		echo 'entra 5';
 		require_once 'app/controllers/error_controller.php';
 		//$router->addRule('/error', array('controller' => 'error', 'action' => 'index'));
 		$controllerClass = 'errorController';
@@ -133,3 +140,5 @@
 
 	if($actionHtml === false) die();
 	else echo $actionHtml;
+
+	?>
